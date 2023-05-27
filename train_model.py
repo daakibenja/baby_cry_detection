@@ -8,17 +8,17 @@ import pickle
 
 import numpy as np
 
-from baby_cry_detection.pc_methods.train_classifier import TrainClassifier
+from pc_methods.train_classifier import TrainClassifier
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--load_path',
-                        default='{}/../../../output/dataset/'.format(os.path.dirname(os.path.abspath(__file__))))
+                        default='{}/output/dataset/'.format(os.path.dirname(os.path.abspath(__file__))))
     parser.add_argument('--save_path',
-                        default='{}/../../../output/model/'.format(os.path.dirname(os.path.abspath(__file__))))
+                        default='{}/output/model/'.format(os.path.dirname(os.path.abspath(__file__))))
     parser.add_argument('--log_path',
-                        default='{}/../../'.format(os.path.dirname(os.path.abspath(__file__))))
+                        default='{}/'.format(os.path.dirname(os.path.abspath(__file__))))
 
     # Arguments
     args = parser.parse_args()
@@ -36,7 +36,7 @@ def main():
     # TRAIN MODEL
 
     logging.info('Calling TrainClassifier')
-
+    print(os.path.join(load_path, 'dataset.npy'))
     X = np.load(os.path.join(load_path, 'dataset.npy'))
     y = np.load(os.path.join(load_path, 'labels.npy'))
 
